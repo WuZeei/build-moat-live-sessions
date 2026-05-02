@@ -13,3 +13,9 @@ venv/
 .DS_Store
 .vscode/
 .idea/
+
+# Claude Code local settings
+.claude/
+
+# Localized docs (Traditional Chinese)
+*.zh.md

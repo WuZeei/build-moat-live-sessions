@@ -5,3 +5,4 @@ dist-ssr
 coverage
 .vite
 .DS_Store
+*.tsbuildinfo
