@@ -29,7 +29,8 @@ def token_exists_in_db(db: Session, token: str) -> bool:
 
 def generate_token(url: str, db: Session) -> str:
     """SHA-256 + nonce + Base62 token generation with collision retry."""
-    for nonce in range(MAX_RETRIES):
+    for attempt in range(MAX_RETRIES):
+        nonce = f"{time.time()}{attempt}"
         digest = hashlib.sha256(f"{url}{nonce}".encode("utf-8")).digest()
         token = base62_encode(digest)[:TOKEN_LENGTH]
         if not token_exists_in_db(db, token):
